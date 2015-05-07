@@ -1,0 +1,209 @@
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['should'], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('should'));
+  } else {
+    factory(Should);
+  }
+}(function (should) {
+  var util = should.util;
+
+  var Assertion = should.Assertion;
+
+  function timesInWords(count) {
+    switch (count) {
+      case 1:
+          return "once";
+      case 2:
+          return "twice";
+      case 3:
+          return "thrice";
+      default:
+          return (count || 0) + " times";
+    }
+  }
+
+
+  function isStub(stub) {
+    if(stub.proxy) return isSinonStub(stub.proxy);
+
+    return typeof stub === 'function' &&
+      typeof stub.getCall === 'function';
+  }
+
+  Assertion.add('stub', function() {
+    this.params = { operator: 'to be stub' };
+
+    this.assert(isStub(this.obj));
+  }, true);
+
+  function proxySinonBooleanProperty(name, message) {
+    Assertion.add(name, function() {
+      var obj = this.obj;
+
+      should(obj).be.stub;
+
+      this.params = { obj: obj.toString(), operator: obj.printf(message) };
+
+      should(obj[name]).be.true;
+    }, true);
+  }
+
+  function proxySinonMethod(name, message) {
+    Assertion.add(name, function() {
+      var obj = this.obj;
+
+      should(obj).be.stub;
+
+      var args = Array.prototype.slice.call(arguments);
+      args.unshift(message)
+
+      this.params = { obj: obj.toString(), operator: obj.printf.apply(obj, args) };
+
+      should(obj[name].apply(obj, arguments)).be.true;
+    });
+  }
+
+  /**
+   * Assert stub was called at least once
+   *
+   * @name called
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @example
+   *
+   * var callback = sinon.spy();
+   * callback();
+   * callback.should.be.called;
+   */
+  proxySinonBooleanProperty('called', 'to have been called at least once but was never called');
+
+  /**
+   * Assert stub was called at exactly once
+   *
+   * @name calledOnce
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @example
+   *
+   * var callback = sinon.spy();
+   * callback();
+   * callback.should.be.calledOnce;
+   */
+  proxySinonBooleanProperty('calledOnce', 'to be called once but was called %c%C');
+
+  /**
+   * Assert stub was called at exactly twice
+   *
+   * @name calledTwice
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @example
+   *
+   * var callback = sinon.spy();
+   * callback();
+   * callback();
+   * callback.should.be.calledTwice;
+   */
+  proxySinonBooleanProperty('calledTwice', 'to be called twice but was called %c%C');
+
+  /**
+   * Assert stub was called at exactly thrice
+   *
+   * @name calledThrice
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @example
+   *
+   * var callback = sinon.spy();
+   * callback();
+   * callback();
+   * callback();
+   * callback.should.be.calledThrice;
+   */
+  proxySinonBooleanProperty('calledThrice', 'to be called thrice but was called %c%C');
+
+  /**
+   * Assert stub was called with given object as this
+   *
+   * @name calledOn
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*} obj - object that was used as this
+   * @example
+   *
+   * var callback = sinon.spy();
+   * var obj = {};
+   * callback.call(obj);
+   * callback.should.be.calledOn(obj);
+   */
+  proxySinonMethod('calledOn', 'to be called with %1 as this but was called with %t');
+
+  /**
+   * Assert stub was called with given object as this always. So if you call stub several times
+   * all should be with the same object
+   *
+   * @name alwaysCalledOn
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*} obj - object that was used as this
+   * @example
+   *
+   * var callback = sinon.spy();
+   * var obj = {};
+   * callback.call(obj);
+   * callback.should.be.alwaysCalledOn(obj);
+   */
+  proxySinonMethod('alwaysCalledOn', 'to always be called with %1 as this but was called with %t');
+
+  proxySinonMethod('calledWithNew', 'to be called with new');
+  proxySinonMethod('alwaysCalledWithNew', 'to always be called with new');
+
+  proxySinonMethod('calledWith', 'to be called with arguments %*%C');
+  proxySinonMethod('alwaysCalledWith', 'to always be called with arguments %*%C');
+  proxySinonMethod('neverCalledWith', 'to never be called with arguments %*%C');
+
+  proxySinonMethod('calledWithMatch', 'to be called with match %*%C');
+  proxySinonMethod('alwaysCalledWithMatch', 'to always be called with match %*%C');
+  proxySinonMethod('neverCalledWithMatch', 'to never be called with match %*%C');
+
+  proxySinonMethod('calledWithExactly', 'to be called with exact arguments %*%C');
+  proxySinonMethod('alwaysCalledWithExactly', 'to always be called with exact arguments %*%C');
+
+  proxySinonMethod('threw', 'to throw exception%C');
+  proxySinonMethod('alwaysThrew', 'to always throw exception%C');
+
+  /**
+   * Assert stub was called at exact number of times
+   *
+   * @name callCount
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {Number} count - number of calles
+   * @example
+   *
+   * var callback = sinon.spy();
+   * callback.should.have.callCount(0);
+   * callback();
+   * callback.should.have.callCount(1);
+   * callback();
+   * callback.should.have.callCount(2);
+   */
+  Assertion.add('callCount', function(count) {
+    var obj = this.obj;
+    should(obj).be.stub;
+
+    this.params = { operator: obj.printf('to be called ' + timesInWords(count) + ' but was called %c%C' )};
+
+    this.assert(obj.callCount === count);
+  });
+
+}));
