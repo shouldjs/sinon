@@ -317,11 +317,11 @@
   proxySinonMethod('threw', 'to throw exception%C');
 
   /**
-   * Passes if the spy always threw the given exception. The exception can be a 
+   * Passes if the spy always threw the given exception. The exception can be a
    * string denoting its type, or an actual object. If no argument is
    * provided, the assertion passes if the spy ever threw any exception.
    *
-   * @name threw
+   * @name alwaysThrew
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
