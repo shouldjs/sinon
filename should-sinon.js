@@ -163,21 +163,170 @@
    */
   proxySinonMethod('alwaysCalledOn', 'to always be called with %1 as this but was called with %t');
 
+  /**
+   * Asserts that stub was called with new
+   *
+   * @name calledWithNew
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @example
+   *
+   * var Class = sinon.spy();
+   *
+   * var c = new Class();
+   *
+   * Class.should.be.calledWithNew;
+   */
   proxySinonMethod('calledWithNew', 'to be called with new');
+
+  /**
+   * @name alwaysCalledWithNew
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @example
+   *
+   * var Class = sinon.spy();
+   *
+   * var c1 = new Class();
+   * var c2 = new Class();
+   *
+   * Class.should.be.alwaysCalledWithNew;
+   */
   proxySinonMethod('alwaysCalledWithNew', 'to always be called with new');
 
+  /**
+   * Asserts that stub was called with given arguments
+   *
+   * @name calledWith
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   * @example
+   *
+   * var callback = sinon.spy();
+   *
+   * callback(1, 2, 3);
+   *
+   * callback.should.be.calledWith(1, 2, 3);
+   */
   proxySinonMethod('calledWith', 'to be called with arguments %*%C');
+
+  /**
+   * @name alwaysCalledWith
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   * @example
+   *
+   * var callback = sinon.spy();
+   *
+   * callback(1, 2, 3);
+   *
+   * callback.should.be.alwaysCalledWith(1, 2, 3);
+   */
   proxySinonMethod('alwaysCalledWith', 'to always be called with arguments %*%C');
+
+  /**
+   * Returns true if the spy/stub was never called with the provided arguments.
+   *
+   * @name neverCalledWith
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   * @example
+   *
+   * var callback = sinon.spy();
+   *
+   * callback(1, 2, 3);
+   *
+   * callback.should.be.neverCalledWith(1, 2, 3);
+   */
   proxySinonMethod('neverCalledWith', 'to never be called with arguments %*%C');
 
+  /**
+   * Returns true if spy was called with matching arguments (and possibly others).
+   *
+   * @name calledWithMatch
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   */
   proxySinonMethod('calledWithMatch', 'to be called with match %*%C');
+
+  /**
+   * Returns true if spy was always called with matching arguments (and possibly others).
+   *
+   * @name alwaysCalledWithMatch
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   */
   proxySinonMethod('alwaysCalledWithMatch', 'to always be called with match %*%C');
+
+  /**
+   * Returns true if the spy/stub was never called with matching arguments.
+   *
+   * @name neverCalledWithMatch
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   */
   proxySinonMethod('neverCalledWithMatch', 'to never be called with match %*%C');
 
+  /**
+   * Returns true if call received provided arguments and no others.
+   *
+   * @name calledWithExactly
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   */
   proxySinonMethod('calledWithExactly', 'to be called with exact arguments %*%C');
+
+  /**
+   * Passes if the spy was always called with the provided arguments and no others.
+   *
+   * @name alwaysCalledWithExactly
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {*...} args - arguments that was used for calling
+   */
   proxySinonMethod('alwaysCalledWithExactly', 'to always be called with exact arguments %*%C');
 
+  /**
+   * Passes if the spy threw the given exception. The exception can be a
+   * string denoting its type, or an actual object. If no argument is
+   * provided, the assertion passes if the spy ever threw any exception.
+   *
+   * @name threw
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {string|Error} ex - exception to be thrown
+   */
   proxySinonMethod('threw', 'to throw exception%C');
+
+  /**
+   * Passes if the spy always threw the given exception. The exception can be a 
+   * string denoting its type, or an actual object. If no argument is
+   * provided, the assertion passes if the spy ever threw any exception.
+   *
+   * @name threw
+   * @memberOf Assertion
+   * @category assertion stubs
+   * @module should-sinon
+   * @param {string|Error} ex - exception to be thrown
+   */
   proxySinonMethod('alwaysThrew', 'to always throw exception%C');
 
   /**
