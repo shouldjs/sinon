@@ -203,7 +203,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    * @example
    *
    * var callback = sinon.spy();
@@ -219,7 +219,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    * @example
    *
    * var callback = sinon.spy();
@@ -237,7 +237,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    * @example
    *
    * var callback = sinon.spy();
@@ -255,7 +255,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    */
   proxySinonMethod('calledWithMatch', 'to be called with match %*%C');
 
@@ -266,7 +266,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    */
   proxySinonMethod('alwaysCalledWithMatch', 'to always be called with match %*%C');
 
@@ -277,7 +277,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    */
   proxySinonMethod('neverCalledWithMatch', 'to never be called with match %*%C');
 
@@ -288,7 +288,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    */
   proxySinonMethod('calledWithExactly', 'to be called with exact arguments %*%C');
 
@@ -299,7 +299,7 @@
    * @memberOf Assertion
    * @category assertion stubs
    * @module should-sinon
-   * @param {*...} args - arguments that was used for calling
+   * @param {...*} args - arguments that was used for calling
    */
   proxySinonMethod('alwaysCalledWithExactly', 'to always be called with exact arguments %*%C');
 
