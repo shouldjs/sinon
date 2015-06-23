@@ -1,6 +1,6 @@
 {
   "name": "should-sinon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Sinon.js assertions for should.js",
   "main": "should-sinon.js",
   "scripts": {
@@ -24,5 +24,8 @@
     "mocha": "latest",
     "mocha-better-spec-reporter": "latest",
     "sinon": "^1.14.1"
+  },
+  "peerDependencies": {
+    "should": ">= 4.x"
   }
 }
