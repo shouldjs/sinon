@@ -46,7 +46,7 @@
 
       this.params = { obj: obj.toString(), operator: obj.printf(message) };
 
-      should(obj[name]).be.true;
+      should(obj[name]).be.true();
     }, true);
   }
 
@@ -61,7 +61,7 @@
 
       this.params = { obj: obj.toString(), operator: obj.printf.apply(obj, args) };
 
-      should(obj[name].apply(obj, arguments)).be.true;
+      should(obj[name].apply(obj, arguments)).be.true();
     });
   }
 
