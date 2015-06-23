@@ -42,19 +42,19 @@
     Assertion.add(name, function() {
       var obj = this.obj;
 
-      should(obj).be.stub;
+      should(obj).be.stub();
 
       this.params = { obj: obj.toString(), operator: obj.printf(message) };
 
       should(obj[name]).be.true();
-    }, true);
+    });
   }
 
   function proxySinonMethod(name, message) {
     Assertion.add(name, function() {
       var obj = this.obj;
 
-      should(obj).be.stub;
+      should(obj).be.stub();
 
       var args = Array.prototype.slice.call(arguments);
       args.unshift(message)
@@ -76,7 +76,7 @@
    *
    * var callback = sinon.spy();
    * callback();
-   * callback.should.be.called;
+   * callback.should.be.called();
    */
   proxySinonBooleanProperty('called', 'to have been called at least once but was never called');
 
@@ -91,7 +91,7 @@
    *
    * var callback = sinon.spy();
    * callback();
-   * callback.should.be.calledOnce;
+   * callback.should.be.calledOnce();
    */
   proxySinonBooleanProperty('calledOnce', 'to be called once but was called %c%C');
 
@@ -107,7 +107,7 @@
    * var callback = sinon.spy();
    * callback();
    * callback();
-   * callback.should.be.calledTwice;
+   * callback.should.be.calledTwice();
    */
   proxySinonBooleanProperty('calledTwice', 'to be called twice but was called %c%C');
 
@@ -124,7 +124,7 @@
    * callback();
    * callback();
    * callback();
-   * callback.should.be.calledThrice;
+   * callback.should.be.calledThrice();
    */
   proxySinonBooleanProperty('calledThrice', 'to be called thrice but was called %c%C');
 
