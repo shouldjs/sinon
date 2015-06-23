@@ -1,6 +1,6 @@
 {
   "name": "should-sinon",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Sinon.js assertions for should.js",
   "main": "should-sinon.js",
   "scripts": {
