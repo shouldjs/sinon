@@ -57,7 +57,7 @@
       should(obj).be.stub();
 
       var args = Array.prototype.slice.call(arguments);
-      args.unshift(message)
+      args.unshift(message);
 
       this.params = { obj: obj.toString(), operator: obj.printf.apply(obj, args) };
 
@@ -348,7 +348,7 @@
    */
   Assertion.add('callCount', function(count) {
     var obj = this.obj;
-    should(obj).be.stub;
+    should(obj).be.stub();
 
     this.params = { operator: obj.printf('to be called ' + timesInWords(count) + ' but was called %c%C' )};
 
