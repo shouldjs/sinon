@@ -57,7 +57,7 @@
       should(obj).be.stub();
 
       var args = Array.prototype.slice.call(arguments);
-      args.unshift(message)
+      args.unshift(message);
 
       this.params = { obj: obj.toString(), operator: obj.printf.apply(obj, args) };
 
