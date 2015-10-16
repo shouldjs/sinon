@@ -348,7 +348,7 @@
    */
   Assertion.add('callCount', function(count) {
     var obj = this.obj;
-    should(obj).be.stub;
+    should(obj).be.stub();
 
     this.params = { operator: obj.printf('to be called ' + timesInWords(count) + ' but was called %c%C' )};
 
