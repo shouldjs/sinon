@@ -7,6 +7,11 @@
     "url": "https://github.com/shouldjs/sinon/issues"
   },
   "devDependencies": {
+    "karma": "latest",
+    "karma-chrome-launcher": "latest",
+    "karma-mocha": "latest",
+    "karma-should": "latest",
+    "karma-sinon": "latest",
     "mocha": "latest",
     "mocha-better-spec-reporter": "latest",
     "sinon": "^1.14.1"
