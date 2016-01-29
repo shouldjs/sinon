@@ -1,7 +1,7 @@
 {
   "name": "should-sinon",
   "description": "Sinon.js assertions for should.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Denis Bardadym <bardadymchik@gmail.com>",
   "bugs": {
     "url": "https://github.com/shouldjs/sinon/issues"
