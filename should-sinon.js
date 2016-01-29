@@ -84,7 +84,7 @@
    * callback();
    * callback.should.be.called();
    */
-  proxySinonBooleanProperty('called', 'to have been called at least once but was never called');
+  proxySinonBooleanProperty('called', 'to have been called, but was called %c');
 
   /**
    * Assert stub was called at exactly once
