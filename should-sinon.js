@@ -7,8 +7,6 @@
     factory(Should);
   }
 }(function (should) {
-  var util = should.util;
-
   var Assertion = should.Assertion;
 
   function timesInWords(count) {
@@ -24,25 +22,27 @@
     }
   }
 
-
-  function isStub(stub) {
-    if(stub.proxy) return isSinonStub(stub.proxy);
-
-    return typeof stub === 'function' &&
-      typeof stub.getCall === 'function';
+  function isCall(call) {
+    return call && isSpy(call.proxy);
   }
 
-  Assertion.add('stub', function() {
-    this.params = { operator: 'to be stub' };
-
-    this.assert(isStub(this.obj));
-  }, true);
+  function isSpy(spy) {
+    return typeof spy === "function" &&
+           typeof spy.getCall === "function" &&
+           typeof spy.calledWithExactly === "function";
+  }
 
   function proxySinonBooleanProperty(name, message) {
     Assertion.add(name, function() {
       var obj = this.obj;
 
-      should(obj).be.stub();
+      if(!isSpy(obj) && !isCall(obj)) {
+        this.params = { obj: obj.toString(), operator: 'to be sinon spy or spy call' };
+        this.fail();
+      }
+      if(isCall(obj)) {
+        obj = obj.proxy;
+      }
 
       this.params = { obj: obj.toString(), operator: obj.printf(message) };
 
@@ -54,7 +54,13 @@
     Assertion.add(name, function() {
       var obj = this.obj;
 
-      should(obj).be.stub();
+      if(!isSpy(obj) && !isCall(obj)) {
+        this.params = { obj: obj.toString(), operator: 'to be sinon spy or spy call' };
+        this.fail();
+      }
+      if(isCall(obj)) {
+        obj = obj.proxy;
+      }
 
       var args = Array.prototype.slice.call(arguments);
       args.unshift(message);
@@ -348,7 +354,14 @@
    */
   Assertion.add('callCount', function(count) {
     var obj = this.obj;
-    should(obj).be.stub();
+
+    if(!isSpy(obj) && !isCall(obj)) {
+      this.params = { obj: obj.toString(), operator: 'to be sinon spy or spy call' };
+      this.fail();
+    }
+    if(isCall(obj)) {
+      obj = obj.proxy;
+    }
 
     this.params = { operator: obj.printf('to be called ' + timesInWords(count) + ' but was called %c%C' )};
 

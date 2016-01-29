@@ -1,0 +1,23 @@
+extends: eslint:recommended
+
+env:
+  node: true
+  mocha: true
+
+rules:
+  quotes: 0
+  indent: 0
+  require-jsdoc: 0
+  eqeqeq: 0
+  curly: 0
+  space-after-keywords: 0
+  no-invalid-this: 0
+  default-case: 0
+  no-nested-ternary: 0
+  func-style: 0
+  new-cap: 0
+  callback-return: 0
+  no-loop-func: 0
+  strict: [2, "global"]
+  semi: [2, "always"]
+  no-console: 1
