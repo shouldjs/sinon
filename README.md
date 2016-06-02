@@ -12,7 +12,7 @@ $ npm install should-sinon --save-dev
 ```js
 var sinon = require('sinon');
 var should = require('should');
-require('./should-sinon');
+require('should-sinon');
 
 it('should get number of calls', function() {
   var callback = sinon.spy();
