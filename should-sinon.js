@@ -9,6 +9,38 @@
 }(function (should) {
   var Assertion = should.Assertion;
 
+  Assertion.add('sinonStub', function() {
+    this.params = { operator: 'to be sinon stub' };
+
+    this.is.not.null().and.not.undefined();
+
+    var method = this.obj;
+    if(method.proxy && method.proxy.isSinonProxy) {
+      method = method.proxy;
+    }
+    method.should.be.a.Function()
+      .and.have.property('getCall')
+        .which.is.a.Function();
+  });
+
+  function isStub(stub) {
+    if (!stub) {
+      return false;
+    }
+
+    if (method.proxy && method.proxy.isSinonProxy) {
+            verifyIsStub(method.proxy);
+        } else {
+            if (typeof method !== "function") {
+                assert.fail(method + " is not a function");
+            }
+
+            if (typeof method.getCall !== "function") {
+                assert.fail(method + " is not stubbed");
+            }
+        }
+  }
+
   function timesInWords(count) {
     switch (count) {
       case 1:

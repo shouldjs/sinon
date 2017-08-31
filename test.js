@@ -2,6 +2,15 @@ var sinon = require('sinon');
 var should = require('should');
 require('./should-sinon');
 
+it('should test if given object is sinon stub', function() {
+  var callback = sinon.spy();
+
+  should(null).be.not.a.sinonStub();
+  should(void 0).be.not.a.sinonStub();
+
+  callback.should.be.a.sinonStub();
+});
+
 it('should get number of calls', function() {
   var callback = sinon.spy();
 
