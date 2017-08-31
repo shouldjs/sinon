@@ -8,8 +8,10 @@
   },
   "devDependencies": {
     "eslint": "^1.10.3",
+    "eslint-config-shouldjs": "^1.0.2",
     "mocha": "latest",
     "mocha-better-spec-reporter": "latest",
+    "should": "latest",
     "sinon": "^1.14.1"
   },
   "homepage": "https://github.com/shouldjs/sinon",
