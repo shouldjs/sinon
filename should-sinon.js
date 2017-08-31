@@ -4,7 +4,7 @@
   } else if (typeof exports === 'object') {
     module.exports = factory(require('should'));
   } else {
-    factory(Should);
+    factory(should);
   }
 }(function (should) {
   var Assertion = should.Assertion;
